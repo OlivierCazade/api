@@ -289,6 +289,9 @@
                         "name": "NetworkConnect"
                     },
                     {
+                        "name": "NetworkObservabilityInstall"
+                    },
+                    {
                         "name": "NewOLM"
                     },
                     {
@@ -350,6 +353,9 @@
                     },
                     {
                         "name": "StoragePerformantSecurityPolicy"
+                    },
+                    {
+                        "name": "TLSAdherence"
                     },
                     {
                         "name": "UpgradeStatus"

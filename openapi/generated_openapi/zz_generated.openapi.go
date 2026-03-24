@@ -338,6 +338,7 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"github.com/openshift/api/config/v1.NetworkDiagnosticsTargetPlacement":                               schema_openshift_api_config_v1_NetworkDiagnosticsTargetPlacement(ref),
 		"github.com/openshift/api/config/v1.NetworkList":                                                     schema_openshift_api_config_v1_NetworkList(ref),
 		"github.com/openshift/api/config/v1.NetworkMigration":                                                schema_openshift_api_config_v1_NetworkMigration(ref),
+		"github.com/openshift/api/config/v1.NetworkObservabilitySpec":                                        schema_openshift_api_config_v1_NetworkObservabilitySpec(ref),
 		"github.com/openshift/api/config/v1.NetworkSpec":                                                     schema_openshift_api_config_v1_NetworkSpec(ref),
 		"github.com/openshift/api/config/v1.NetworkStatus":                                                   schema_openshift_api_config_v1_NetworkStatus(ref),
 		"github.com/openshift/api/config/v1.Node":                                                            schema_openshift_api_config_v1_Node(ref),
@@ -16942,6 +16943,26 @@ func schema_openshift_api_config_v1_NetworkMigration(ref common.ReferenceCallbac
 	}
 }
 
+func schema_openshift_api_config_v1_NetworkObservabilitySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "NetworkObservabilitySpec defines the configuration for network observability installation",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"installationPolicy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "installationPolicy controls whether network observability is installed during cluster deployment. Valid values are \"\", \"InstallAndEnable\" and \"DoNotInstall\". When set to \"\", network observability will be installed unless this is a SNO cluster. When set to \"InstallAndEnable\", network observability will be installed and enabled. When set to \"DoNotInstall\", network observability will not be installed.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
 func schema_openshift_api_config_v1_NetworkSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -17016,12 +17037,19 @@ func schema_openshift_api_config_v1_NetworkSpec(ref common.ReferenceCallback) co
 							Ref:         ref("github.com/openshift/api/config/v1.NetworkDiagnostics"),
 						},
 					},
+					"networkObservability": {
+						SchemaProps: spec.SchemaProps{
+							Description: "networkObservability is an optional field that configures network observability installation during cluster deployment (day-0). When omitted, network observability will be installed unless this is a SNO cluster.",
+							Default:     map[string]interface{}{},
+							Ref:         ref("github.com/openshift/api/config/v1.NetworkObservabilitySpec"),
+						},
+					},
 				},
 				Required: []string{"clusterNetwork", "serviceNetwork", "networkType"},
 			},
 		},
 		Dependencies: []string{
-			"github.com/openshift/api/config/v1.ClusterNetworkEntry", "github.com/openshift/api/config/v1.ExternalIPConfig", "github.com/openshift/api/config/v1.NetworkDiagnostics"},
+			"github.com/openshift/api/config/v1.ClusterNetworkEntry", "github.com/openshift/api/config/v1.ExternalIPConfig", "github.com/openshift/api/config/v1.NetworkDiagnostics", "github.com/openshift/api/config/v1.NetworkObservabilitySpec"},
 	}
 }
 

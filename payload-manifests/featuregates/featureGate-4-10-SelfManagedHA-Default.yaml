@@ -216,6 +216,9 @@
                         "name": "NetworkConnect"
                     },
                     {
+                        "name": "NetworkObservabilityInstall"
+                    },
+                    {
                         "name": "NewOLMBoxCutterRuntime"
                     },
                     {
@@ -250,6 +253,9 @@
                     },
                     {
                         "name": "SignatureStores"
+                    },
+                    {
+                        "name": "TLSAdherence"
                     },
                     {
                         "name": "VSphereConfigurableMaxAllowedBlockVolumesPerNode"

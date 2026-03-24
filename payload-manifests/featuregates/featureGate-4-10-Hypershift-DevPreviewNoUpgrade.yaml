@@ -310,6 +310,9 @@
                         "name": "NetworkConnect"
                     },
                     {
+                        "name": "NetworkObservabilityInstall"
+                    },
+                    {
                         "name": "NutanixMultiSubnets"
                     },
                     {
@@ -350,6 +353,9 @@
                     },
                     {
                         "name": "StoragePerformantSecurityPolicy"
+                    },
+                    {
+                        "name": "TLSAdherence"
                     },
                     {
                         "name": "UpgradeStatus"

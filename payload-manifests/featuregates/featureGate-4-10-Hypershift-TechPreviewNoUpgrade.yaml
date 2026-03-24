@@ -313,6 +313,9 @@
                         "name": "MutatingAdmissionPolicy"
                     },
                     {
+                        "name": "NetworkObservabilityInstall"
+                    },
+                    {
                         "name": "NutanixMultiSubnets"
                     },
                     {
@@ -350,6 +353,9 @@
                     },
                     {
                         "name": "StoragePerformantSecurityPolicy"
+                    },
+                    {
+                        "name": "TLSAdherence"
                     },
                     {
                         "name": "UpgradeStatus"

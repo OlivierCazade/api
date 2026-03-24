@@ -292,6 +292,9 @@
                         "name": "MutatingAdmissionPolicy"
                     },
                     {
+                        "name": "NetworkObservabilityInstall"
+                    },
+                    {
                         "name": "NewOLM"
                     },
                     {
@@ -350,6 +353,9 @@
                     },
                     {
                         "name": "StoragePerformantSecurityPolicy"
+                    },
+                    {
+                        "name": "TLSAdherence"
                     },
                     {
                         "name": "UpgradeStatus"
