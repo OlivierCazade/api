@@ -3,9 +3,10 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     api-approved.openshift.io: https://github.com/openshift/api/pull/470
-    api.openshift.io/merged-by-featuregates: "true"
-    include.release.openshift.io/ibm-cloud-managed: "true"
-    include.release.openshift.io/self-managed-high-availability: "true"
+    api.openshift.io/filename-cvo-runlevel: "0000_10"
+    api.openshift.io/filename-operator: config-operator
+    api.openshift.io/filename-ordering: "01"
+    feature-gate.release.openshift.io/NetworkObservabilityInstall: "true"
     release.openshift.io/bootstrap-required: "true"
   name: networks.config.openshift.io
 spec:
@@ -259,6 +260,26 @@ spec:
                         type: array
                         x-kubernetes-list-type: atomic
                     type: object
+                type: object
+              networkObservability:
+                description: |-
+                  networkObservability is an optional field that configures network observability installation
+                  during cluster deployment (day-0).
+                  When omitted, network observability will be installed unless this is a SNO cluster.
+                minProperties: 1
+                properties:
+                  installationPolicy:
+                    description: |-
+                      installationPolicy controls whether network observability is installed during cluster deployment.
+                      Valid values are "", "InstallAndEnable" and "DoNotInstall".
+                      When set to "", network observability will be installed unless this is a SNO cluster.
+                      When set to "InstallAndEnable", network observability will be installed and enabled.
+                      When set to "DoNotInstall", network observability will not be installed.
+                    enum:
+                    - ""
+                    - InstallAndEnable
+                    - DoNotInstall
+                    type: string
                 type: object
               networkType:
                 description: |-
